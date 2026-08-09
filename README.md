@@ -92,7 +92,8 @@ Cleaned CSV Files
       ▼
 SQLite Database
       │
-      ├──────────────► SQL Analysis
+      ▼
+ SQL Analysis 
       │
       ▼
 Exploratory Data Analysis
