@@ -2,7 +2,10 @@
 
 ## Overview
 
-This project explores whether changes in **normalised whole brain volume (nWBV)** measured from MRI scans are associated with Alzheimer's disease and cognitive decline.
+An end-to-end clinical data pipeline investigating whether **normalised whole brain volume (nWBV)** measured from MRI scans 
+declines faster in patients who develop Alzheimer's disease compared to those who remain cognitively healthy.
+
+Built using real patient data from the OASIS study, this project mirrors the core responsibilities of a clinical data integration role — ETL pipeline development, structured data management, SQL-based analysis, and communicating findings to both technical and non-technical audiences.
 
 Using the **OASIS-1 cross-sectional dataset** and the **OASIS-2 longitudinal dataset**, I built an end-to-end data analysis workflow combining:
 
@@ -30,6 +33,22 @@ The analysis focused on four main questions:
 
 ---
 
+## Key Findings
+
+**OASIS-1 — Snapshot Analysis**
+- Demented patients showed lower average brain volume (0.7220) compared to nondemented patients (0.7525)
+- Cognitive scores were consistently lower in demented patients (MMSE 24.3 vs 29.0)
+- Average ages were similar across both groups (76.8 vs 75.9), confirming the difference is linked to dementia status rather than age
+- Brain volume difference held across both male and female patients
+
+**OASIS-2 — Longitudinal Analysis**
+- Converted patients lost the most brain volume across the study period (average decline 0.0237) compared to nondemented patients (0.0143) — nearly double
+- Brain volume in converted patients declined from 0.7379 at visit 1 to 0.6694 by visit 5
+- Individual patient data shows brain volume declining in visits prior to CDR score changing from 0 to 0.5, suggesting neurodegeneration may precede formal clinical classification
+- Most conversions occurred between visits 2 and 3 at average ages of 78 to 82
+
+---
+
 # Data
 
 The project uses data from the **Open Access Series of Imaging Studies (OASIS)**.
@@ -42,10 +61,12 @@ The two datasets were used because they answer different parts of the research q
 
 **OASIS-2** is longitudinal, meaning the same participants were followed across multiple visits. This made it possible to investigate how brain volume and cognitive scores changed over time, particularly in patients who later converted to dementia.
 
-Rather than combining the datasets, they were analysed separately because they have different study designs. Using each dataset for its intended purpose allowed the project to examine both:
-
-- differences between patient groups at one time point, and
-- changes within patients over time.
+## Why Datasets Were Kept Separate
+Combining OASIS-1 and OASIS-2 would introduce structural imbalance 
+— OASIS-1 has one row per patient while OASIS-2 has multiple rows 
+per patient. Additionally, data was collected at different time 
+periods on different MRI hardware, introducing potential batch 
+effects. Each dataset was used for what it is best suited for.
 
 ### OASIS-1
 Cross-sectional MRI data were used to compare characteristics of demented and nondemented participants at a single point in time.
@@ -60,7 +81,6 @@ Variables analysed included:
 - Clinical Dementia Rating (CDR)
 - Estimated Total Intracranial Volume (eTIV)
 - Normalised Whole Brain Volume (nWBV)
-- Atlas Scaling Factor (ASF)
 
 ### OASIS-2
 Longitudinal MRI data were used to follow participants across multiple clinical visits.
@@ -76,8 +96,17 @@ This made it possible to investigate changes in:
 The raw OASIS datasets are **not included in this repository**. They must be obtained separately from the OASIS data source.
 
 ---
+## Tools Used
+- Python 3
+- pandas
+- SQLite3
+- Matplotlib
+- Seaborn
+- Jupyter Notebooks (VSCode)
 
-# Analysis Workflow
+---
+
+## Analysis Workflow
 
 The project follows a structured data pipeline:
 
@@ -117,3 +146,12 @@ Visualisation and Interpretation
 ### Converted Patient Trajectories
 
 ![Converted Patient Trajectories](figures/converted_patient_trajectories.png)
+
+## Findings
+
+- **Lower brain volume in dementia:** OASIS-1 participants in the demented group had lower average nWBV (0.7220) than nondemented participants (0.7525).
+- **Lower cognitive scores:** Average MMSE was approximately 24.3 in the demented group compared with 29.0 in the nondemented group.
+- **Greater longitudinal decline:** In OASIS-2, converted patients showed the greatest average total decline in nWBV (0.0237), compared with demented (0.0153) and nondemented (0.0143) participants.
+- **Individual trajectories:** Several converted-patient trajectories showed decreasing brain volume across repeated visits, supporting further investigation of structural change around clinical conversion.
+
+These findings are exploratory and should not be interpreted as demonstrating that brain-volume decline independently predicts Alzheimer's disease.
