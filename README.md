@@ -38,7 +38,7 @@ The analysis focused on four main questions:
 **OASIS-1 — Snapshot Analysis**
 - Demented patients showed lower average brain volume (0.7220) compared to nondemented patients (0.7525)
 - Cognitive scores were consistently lower in demented patients (MMSE 24.3 vs 29.0)
-- Average ages were similar across both groups (76.8 vs 75.9), confirming the difference is linked to dementia status rather than age
+- Average ages were similar between the groups (76.8 vs 75.9), reducing the likelihood that the observed group difference was driven simply by a large difference in mean age.
 - Brain volume difference held across both male and female patients
 
 **OASIS-2 — Longitudinal Analysis**
