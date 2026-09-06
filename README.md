@@ -110,28 +110,25 @@ The raw OASIS datasets are **not included in this repository**. They must be obt
 
 The project follows a structured data pipeline:
 
-Raw OASIS Data
-      │
-      ▼
-Data Cleaning with Pandas
-      │
-      ▼
-Cleaned CSV Files
-      │
-      ▼
-SQLite Database
-      │
-      ▼
- SQL Analysis 
-      │
-      ▼
-Exploratory Data Analysis
-      │
-      ▼
-Cross-sectional + Longitudinal Analysis
-      │
-      ▼
-Visualisation and Interpretation
+## Analysis Workflow
+
+The project follows a structured data pipeline:
+
+**Raw OASIS Data**  
+↓  
+**Data Cleaning with Pandas**  
+↓  
+**Cleaned CSV Files**  
+↓  
+**SQLite Database**  
+↓  
+**SQL Analysis**  
+↓  
+**Exploratory Data Analysis**  
+↓  
+**Cross-sectional & Longitudinal Analysis**  
+↓  
+**Visualisation & Interpretation**
 
 ## Key Visualisations
 
